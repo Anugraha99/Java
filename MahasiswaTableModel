@@ -1,0 +1,38 @@
+package Model;
+
+import Table.Mahasiswa;
+import java.util.List;
+import javax.swing.table.AbstractTableModel;
+
+public class MahasiswaTableModel extends AbstractTableModel{
+    private List<Mahasiswa> list;
+
+    public MahasiswaTableModel() {
+    }
+
+    public MahasiswaTableModel(List<Mahasiswa> list) {
+        this.list = list;
+    }
+    
+    @Override
+    public int getRowCount() {
+       return list.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 6;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return list.get(rowIndex).getValue(columnIndex);
+    }
+
+    private String [] columns = {"NIM","Nama","Jurusan","Alamat","Email","Telepon"};
+    @Override
+    public String getColumnName(int index) {
+        return columns[index]; 
+    }
+
+}
